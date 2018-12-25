@@ -9,6 +9,12 @@ exports.parse = function (text) {
 exports.validate = function (tree) {
   var valid = ajv.validate(schema, tree)
   if (!valid) return tree.errors
+  if (!allGoToTargetsValid(tree)) return false
+  if (!allQuestionsReferenced(tree)) return false
+  return true
+}
+
+function allGoToTargetsValid (tree) {
   var ids = Object.keys(tree)
   for (var questionIndex = 0; questionIndex < tree.length; questionIndex++) {
     var question = tree[questionIndex]
@@ -22,4 +28,15 @@ exports.validate = function (tree) {
       }
     }
   }
+  return true
+}
+
+function allQuestionsReferenced (tree) {
+  return Object.keys(tree).every(function (id) {
+    return tree.some(function (question) {
+      return question.answers.some(function (answer) {
+        return answer.goto === id
+      })
+    })
+  })
 }
