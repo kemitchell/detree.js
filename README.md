@@ -17,7 +17,7 @@ var first = {
     }
   },
   attribution: {
-    question: 'Do you want users to share code they build on similar terms?',
+    question: 'Do you want users to share their own work?',
     answers: {
       No: { decision: 'Apache-2.0' },
       Yes: { decision: 'GPL-3.0' }
@@ -74,7 +74,7 @@ var fourth = {
     }
   },
   attribution: {
-    question: 'Do you want users to share code they build on similar terms?',
+    question: 'Do you want users to share their own work?',
     answers: {
       No: { decision: 'Apache-2.0' },
       Yes: { goto: 'start' } // cycle
