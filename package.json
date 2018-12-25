@@ -5,9 +5,7 @@
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
   "repository": "kemitchell/detree.js",
   "devDependencies": {
-    "ajv-cli": "^3.0.0",
     "defence-cli": "^2.0.1",
-    "lamos-to-json": "^3.0.2",
     "replace-require-self": "^1.1.1"
   },
   "dependencies": {
