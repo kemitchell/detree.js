@@ -2,11 +2,18 @@
 var detree = require('detree')
 
 var first = {
+  // The `start` question is required.
   start: {
     question: 'Do you want anything back from your users?',
     answers: {
-      No: { result: 'CC0-1.0' },
-      Yes: { goto: 'attribution' }
+      No: {
+        // End with the given result.
+        result: 'CC0-1.0'
+      },
+      Yes: {
+        // Go to the `attribution` question.
+        goto: 'attribution'
+      }
     }
   },
   attribution: {
