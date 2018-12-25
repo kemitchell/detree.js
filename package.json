@@ -1,6 +1,6 @@
 {
   "name": "detree",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "validate structured-data decision trees",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
   "repository": "kemitchell/detree.js",
