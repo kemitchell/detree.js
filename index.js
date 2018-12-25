@@ -8,11 +8,32 @@ module.exports = function (tree) {
   var valid = validate(tree)
   if (!valid) return validate.errors
   var errors = []
-  // TODO: Check for cycles.
+  errors = errors.concat(cycles(tree))
   errors = errors.concat(hasStartQuestion(tree))
   errors = errors.concat(allGoToTargetsValid(tree))
   errors = errors.concat(allQuestionsReferenced(tree))
   return errors
+}
+
+function cycles (tree) {
+  var errors = []
+  if (!tree.start) return errors
+  recurse('start', [])
+  return errors
+
+  function recurse (key, previous) {
+    if (previous.indexOf(key) !== -1) {
+      errors.push('Question "' + key + '" cycles back to itself.')
+      return
+    }
+    var question = tree[key]
+    if (question === undefined) return
+    var answers = Object.values(question.answers)
+    answers.forEach(function (answer) {
+      if (!answer.hasOwnProperty('goto')) return
+      recurse(answer.goto, previous.concat(key))
+    })
+  }
 }
 
 function hasStartQuestion (tree) {

@@ -58,6 +58,28 @@ assert.deepEqual(
   ]
 )
 
+var fourth = {
+  start: {
+    question: 'Do you want anything back from your users?',
+    answers: {
+      No: { result: 'CC0-1.0' },
+      Yes: { goto: 'attribution' }
+    }
+  },
+  attribution: {
+    question: 'Do you want users to share code they build on similar terms?',
+    answers: {
+      No: { result: 'Apache-2.0' },
+      Yes: { goto: 'start' } // cycle
+    }
+  }
+}
+
+assert.deepEqual(
+  detree(fourth),
+  ['Question "start" cycles back to itself.']
+)
+
 var invalid = {
   'not': 'a valid decision tree'
 }
