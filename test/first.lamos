@@ -1,0 +1,21 @@
+- id: start
+  question: Do you want users of your software to preserve your credit and licensing information?
+  answers:
+    No:
+      result: CC0-1.0
+    Yes:
+      goto: copyleft?
+- id: copyleft?
+  question: Do you want users of your software to contribute their own work as open source?
+  answers:
+    No:
+      result: Charity
+    Yes:
+      goto: strong copyleft?
+- id: strong copyleft?
+  question: what kind of work by others do you want to require them to release?
+  answers:
+    Changes to my work:
+      result: MPL-2.0
+    Larger programs they build with my work:
+      result: GPL-3.0
