@@ -4,6 +4,7 @@
   "description": "validate structured-data decision trees",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
   "repository": "kemitchell/detree.js",
+  "license": "MIT",
   "files": [
     "index.js",
     "schema.json"
