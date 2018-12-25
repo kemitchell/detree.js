@@ -1,15 +1,10 @@
 var AJV = require('ajv')
-var lamos = require('lamos')
 var schema = require('./schema')
 
 var ajv = new AJV()
 var validate = ajv.compile(schema)
 
-exports.parse = function (text) {
-  return lamos.parse(text)
-}
-
-exports.validate = function (tree) {
+module.exports = function (tree) {
   var valid = validate(tree)
   if (!valid) return validate.errors
   var errors = []
