@@ -3,5 +3,12 @@
   "version": "0.0.0",
   "description": "parse plain text descriptions of decision trees",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
-  "repository": "kemitchell/plain-text-decision-tree.js"
+  "repository": "kemitchell/plain-text-decision-tree.js",
+  "devDependencies": {
+    "lamos-to-json": "^3.0.2"
+  },
+  "dependencies": {
+    "ajv": "^6.6.2",
+    "lamos": "^3.0.4"
+  }
 }
