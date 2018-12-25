@@ -5,6 +5,7 @@
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
   "repository": "kemitchell/plain-text-decision-tree.js",
   "devDependencies": {
+    "ajv-cli": "^3.0.0",
     "lamos-to-json": "^3.0.2"
   },
   "dependencies": {
