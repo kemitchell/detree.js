@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "decisiontree"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "tree": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/definitions/nonEmptyString"
+          },
+          "question": {
+            "$ref": "#/definitions/nonEmptyString"
+          },
+          "answers": {
+            "type": "object",
+            "patternProperties": {
+              ".+": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "goto"
+                    ],
+                    "properties": {
+                      "result": {
+                        "$ref": "#/definitions/nonEmptyString"
+                      },
+                      "cost": {
+                        "$ref": "#/definitions/nonEmptyString"
+                      },
+                      "utility": {
+                        "$ref": "#/definitions/nonEmptyString"
+                      },
+                      "probability": {
+                        "$ref": "#/definitions/nonEmptyString"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "result"
+                    ],
+                    "properties": {
+                      "goto": {
+                        "$ref": "#/definitions/nonEmptyString"
+                      },
+                      "cost": {
+                        "$ref": "#/definitions/nonEmptyString"
+                      },
+                      "utility": {
+                        "$ref": "#/definitions/nonEmptyString"
+                      },
+                      "probability": {
+                        "$ref": "#/definitions/nonEmptyString"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "minProperties": 2
+          }
+        },
+        "required": [
+          "question",
+          "answers"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "tree"
+  ],
+  "definitions": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
