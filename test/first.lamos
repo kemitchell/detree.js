@@ -12,13 +12,27 @@ tree:
     question: Do you want users of your software to contribute their own work as open source?
     answers:
       No:
-        result: Charity
+        result: Apache-2.0
       Yes:
         goto: strong copyleft?
   - id: strong copyleft?
-    question: what kind of work by others do you want to require them to release?
+    question: What kind of work by others do you want to require them to release?
     answers:
       Changes to my work:
-        result: MPL-2.0
+        goto: narrow copyleft
       Larger programs they build with my work:
+        goto: broad copyleft
+  - id: narrow copyleft
+    quesiton: Do you want others to share work when they use yours to offer network services?
+    answers:
+      Yes:
+        result: OSL-3.0
+      No:
+        result: MPL-2.0
+  - id: broad copyleft
+    quesiton: Do you want others to share work when they use yours to offer network services?
+    answers:
+      Yes:
+        result: AGPL-3.0
+      No:
         result: GPL-3.0
