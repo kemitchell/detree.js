@@ -1,0 +1,2 @@
+Validate that all `goto` statements reference existing `id` values.
+Check for cycles.
