@@ -1,2 +1,3 @@
 Validate that all `goto` statements reference existing `id` values.
+Validate that all questions have at least one reference.
 Check for cycles.
