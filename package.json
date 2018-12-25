@@ -1,9 +1,9 @@
 {
-  "name": "plain-text-decision-tree",
+  "name": "detree",
   "version": "0.0.0",
   "description": "parse plain text descriptions of decision trees",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
-  "repository": "kemitchell/plain-text-decision-tree.js",
+  "repository": "kemitchell/detree.js",
   "devDependencies": {
     "ajv-cli": "^3.0.0",
     "lamos-to-json": "^3.0.2"
