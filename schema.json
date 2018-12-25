@@ -5,8 +5,9 @@
       "const": "decisiontree"
     },
     "version": {
-      "type": "integer",
-      "minimum": 1
+      "enum": [
+        "1"
+      ]
     },
     "tree": {
       "type": "array",
