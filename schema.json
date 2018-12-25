@@ -1,71 +1,73 @@
 {
-  "type": "array",
-  "items": {
-    "type": "object",
-    "properties": {
-      "id": {
-        "$ref": "#/definitions/nonEmptyString"
-      },
-      "question": {
-        "$ref": "#/definitions/nonEmptyString"
-      },
-      "answers": {
-        "type": "object",
-        "patternProperties": {
-          ".+": {
-            "oneOf": [
-              {
-                "type": "object",
-                "required": [
-                  "goto"
-                ],
-                "properties": {
-                  "result": {
-                    "$ref": "#/definitions/nonEmptyString"
-                  },
-                  "cost": {
-                    "$ref": "#/definitions/nonEmptyString"
-                  },
-                  "utility": {
-                    "$ref": "#/definitions/nonEmptyString"
-                  },
-                  "probability": {
-                    "$ref": "#/definitions/nonEmptyString"
-                  }
-                }
-              },
-              {
-                "type": "object",
-                "required": [
-                  "result"
-                ],
-                "properties": {
-                  "goto": {
-                    "$ref": "#/definitions/nonEmptyString"
-                  },
-                  "cost": {
-                    "$ref": "#/definitions/nonEmptyString"
-                  },
-                  "utility": {
-                    "$ref": "#/definitions/nonEmptyString"
-                  },
-                  "probability": {
-                    "$ref": "#/definitions/nonEmptyString"
-                  }
-                }
-              }
-            ]
-          }
+  "type": "object",
+  "patternProperties": {
+    ".+": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/nonEmptyString"
         },
-        "minProperties": 2
-      }
-    },
-    "required": [
-      "question",
-      "answers"
-    ]
+        "question": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "answers": {
+          "type": "object",
+          "patternProperties": {
+            ".+": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "goto"
+                  ],
+                  "properties": {
+                    "result": {
+                      "$ref": "#/definitions/nonEmptyString"
+                    },
+                    "cost": {
+                      "$ref": "#/definitions/nonEmptyString"
+                    },
+                    "utility": {
+                      "$ref": "#/definitions/nonEmptyString"
+                    },
+                    "probability": {
+                      "$ref": "#/definitions/nonEmptyString"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "goto": {
+                      "$ref": "#/definitions/nonEmptyString"
+                    },
+                    "cost": {
+                      "$ref": "#/definitions/nonEmptyString"
+                    },
+                    "utility": {
+                      "$ref": "#/definitions/nonEmptyString"
+                    },
+                    "probability": {
+                      "$ref": "#/definitions/nonEmptyString"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "minProperties": 2,
+      "required": [
+        "question",
+        "answers"
+      ]
+    }
   },
-  "minItems": 1,
+  "minProperties": 1,
   "definitions": {
     "nonEmptyString": {
       "type": "string",
