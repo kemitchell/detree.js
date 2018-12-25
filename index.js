@@ -8,6 +8,7 @@ module.exports = function (tree) {
   var valid = validate(tree)
   if (!valid) return validate.errors
   var errors = []
+  // TODO: Check for cycles.
   errors = errors.concat(hasStartQuestion(tree))
   errors = errors.concat(allGoToTargetsValid(tree))
   errors = errors.concat(allQuestionsReferenced(tree))
