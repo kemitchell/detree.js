@@ -4,6 +4,10 @@
   "description": "validate structured-data decision trees",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
   "repository": "kemitchell/detree.js",
+  "files": [
+    "index.js",
+    "schema.json"
+  ],
   "devDependencies": {
     "defence-cli": "^2.0.1",
     "istanbul": "^0.4.5",
