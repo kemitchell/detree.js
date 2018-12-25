@@ -1,7 +1,7 @@
 ```javascript
 var detree = require('detree')
 
-var example = {
+var first = {
   "start": {
     "question": "Do you want anything back from your users?",
     "answers": {
@@ -27,6 +27,28 @@ var example = {
 }
 
 var assert = require('assert')
-var errors = detree(example)
-assert.deepEqual(errors, [])
+
+assert.deepEqual(detree(first), [/* no errors */])
+
+var second = {
+  "not start": {
+    "question": "Do you want anything back from your users?",
+    "answers": {
+      "No": {
+        "result": "CC0-1.0"
+      },
+      "Yes": {
+        "result": "Apache-2.0"
+      }
+    }
+  }
+}
+
+assert.deepEqual(
+  detree(second),
+  [
+    'Missing "start" question.',
+    'No answer references "not start".'
+  ]
+)
 ```

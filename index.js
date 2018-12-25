@@ -8,9 +8,17 @@ module.exports = function (tree) {
   var valid = validate(tree)
   if (!valid) return validate.errors
   var errors = []
+  errors = errors.concat(hasStartQuestion(tree))
   errors = errors.concat(allGoToTargetsValid(tree))
   errors = errors.concat(allQuestionsReferenced(tree))
   return errors
+}
+
+function hasStartQuestion (tree) {
+  var hasStart = Object.keys(tree).some(function (id) {
+    return id === 'start'
+  })
+  return hasStart ? [] : ['Missing "start" question.']
 }
 
 function allGoToTargetsValid (tree) {
@@ -48,7 +56,7 @@ function allQuestionsReferenced (tree) {
           })
       })
     if (!referenced) {
-      errors.push('No answer references ' + id + '.')
+      errors.push('No answer references "' + id + '".')
     }
   })
   return errors
