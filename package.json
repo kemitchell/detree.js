@@ -6,12 +6,15 @@
   "repository": "kemitchell/detree.js",
   "devDependencies": {
     "defence-cli": "^2.0.1",
+    "istanbul": "^0.4.5",
     "replace-require-self": "^1.1.1"
   },
   "dependencies": {
     "ajv": "^6.6.2"
   },
   "scripts": {
-    "test": "defence -i javascript README.md | replace-require-self | node"
+    "test": "defence -i javascript README.md | replace-require-self | node",
+    "precoverage": "defence -i javascript README.md | replace-require-self > test.js ; istanbul cover test.js ; rm -f test.js",
+    "coverage": "istanbul check-coverage --branches 100 --functions 100 --statements 100 --lines 100"
   }
 }
