@@ -20,14 +20,14 @@ strong copyleft?:
     Larger programs they build with my work:
       goto: broad copyleft
 narrow copyleft:
-  quesiton: Do you want others to share work when they use yours to offer network services?
+  question: Do you want others to share work when they use yours to offer network services?
   answers:
     Yes:
       result: OSL-3.0
     No:
       result: MPL-2.0
 broad copyleft:
-  quesiton: Do you want others to share work when they use yours to offer network services?
+  question: Do you want others to share work when they use yours to offer network services?
   answers:
     Yes:
       result: AGPL-3.0
