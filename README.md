@@ -73,4 +73,12 @@ assert.deepEqual(
     'references nonexistent "nonexistent".'
   ]
 )
+
+var invalid = {
+  'not': 'a valid decision tree'
+}
+
+var invalidErrors = detree(invalid)
+assert(Array.isArray(invalidErrors))
+assert(invalidErrors.length > 0)
 ```
