@@ -17,8 +17,10 @@
     "ajv": "^6.6.2"
   },
   "scripts": {
-    "test": "defence -i javascript README.md | replace-require-self | node",
-    "precoverage": "defence -i javascript README.md | replace-require-self > test.js ; istanbul cover test.js ; rm -f test.js",
+    "pretest": "defence -i javascript README.md | replace-require-self > test.js",
+    "test": "node test.js",
+    "posttest": "rm -f test.js",
+    "precoverage": "npm run pretest ; istanbul cover test.js ; npm run posttest",
     "coverage": "istanbul check-coverage --branches 100 --functions 100 --statements 100 --lines 100"
   }
 }
