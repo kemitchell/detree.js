@@ -25,23 +25,22 @@ function hasStartQuestion (tree) {
 function allGoToTargetsValid (tree) {
   var errors = []
   var ids = Object.keys(tree)
-  for (var questionIndex = 0; questionIndex < tree.length; questionIndex++) {
-    var question = tree[questionIndex]
-    for (var answerIndex = 0; answerIndex < question.answers.length; answerIndex++) {
-      var answer = question.answers[answerIndex]
+  Object.keys(tree).forEach(function (questionKey) {
+    var question = tree[questionKey]
+    Object.keys(question.answers).forEach(function (answerKey) {
+      var answer = question.answers[answerKey]
       if (answer.hasOwnProperty('goto')) {
         var goto = answer.goto
         if (ids.indexOf(goto) === -1) {
           errors.push(
-            'Question ' + question.id + ', ' +
-            'answer "' + answer.text + '"' +
-            ' references nonexistent ' + answer.goto +
-            '.'
+            'Question "' + questionKey + '", ' +
+            'answer "' + answerKey + '" ' +
+            'references nonexistent "' + answer.goto + '".'
           )
         }
       }
-    }
-  }
+    })
+  })
   return errors
 }
 

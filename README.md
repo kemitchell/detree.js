@@ -51,4 +51,26 @@ assert.deepEqual(
     'No answer references "not start".'
   ]
 )
+
+var third = {
+  "start": {
+    "question": "Do you want anything back from your users?",
+    "answers": {
+      "No": {
+        "result": "CC0-1.0"
+      },
+      "Yes": {
+        "goto": "nonexistent"
+      }
+    }
+  }
+}
+
+assert.deepEqual(
+  detree(third),
+  [
+    'Question "start", answer "Yes" ' +
+    'references nonexistent "nonexistent".'
+  ]
+)
 ```
