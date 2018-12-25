@@ -2,7 +2,18 @@
   "type": "object",
   "patternProperties": {
     ".+": {
+      "$ref": "#/definitions/question"
+    }
+  },
+  "minProperties": 1,
+  "definitions": {
+    "question": {
       "type": "object",
+      "minProperties": 2,
+      "required": [
+        "question",
+        "answers"
+      ],
       "properties": {
         "id": {
           "$ref": "#/definitions/nonEmptyString"
@@ -14,61 +25,56 @@
           "type": "object",
           "patternProperties": {
             ".+": {
-              "oneOf": [
-                {
-                  "type": "object",
-                  "required": [
-                    "goto"
-                  ],
-                  "properties": {
-                    "decision": {
-                      "$ref": "#/definitions/nonEmptyString"
-                    },
-                    "cost": {
-                      "$ref": "#/definitions/nonEmptyString"
-                    },
-                    "utility": {
-                      "$ref": "#/definitions/nonEmptyString"
-                    },
-                    "probability": {
-                      "$ref": "#/definitions/nonEmptyString"
-                    }
-                  }
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "decision"
-                  ],
-                  "properties": {
-                    "goto": {
-                      "$ref": "#/definitions/nonEmptyString"
-                    },
-                    "cost": {
-                      "$ref": "#/definitions/nonEmptyString"
-                    },
-                    "utility": {
-                      "$ref": "#/definitions/nonEmptyString"
-                    },
-                    "probability": {
-                      "$ref": "#/definitions/nonEmptyString"
-                    }
-                  }
-                }
-              ]
+              "$ref": "#/definitions/answer"
             }
           }
         }
-      },
-      "minProperties": 2,
-      "required": [
-        "question",
-        "answers"
+      }
+    },
+    "answer": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "goto"
+          ],
+          "properties": {
+            "decision": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "cost": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "utility": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "probability": {
+              "$ref": "#/definitions/nonEmptyString"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "decision"
+          ],
+          "properties": {
+            "goto": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "cost": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "utility": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "probability": {
+              "$ref": "#/definitions/nonEmptyString"
+            }
+          }
+        }
       ]
-    }
-  },
-  "minProperties": 1,
-  "definitions": {
+    },
     "nonEmptyString": {
       "type": "string",
       "minLength": 1
